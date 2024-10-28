@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            /* Rounded corners for the table */
+            overflow: hidden;
+            /* Ensures rounded corners are visible */
+        }
+
+        th,
+        td {
+            padding: 15px;
+            /* Increased padding for better spacing */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            /* Right border for separation */
+        }
+
+        th {
+            background-color: #007bff;
+            /* Primary color for header */
+            color: white;
+            /* White text for contrast */
+            font-weight: bold;
+        }
+
+        /* Remove right border for the last column */
+        td:last-child,
+        th:last-child {
+            border-right: none;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            /* Light hover effect */
+        }
+
+        .links {
+            margin-top: 20px;
+            text-align: center;
+            /* Center the links */
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+            font-weight: bold;
+            /* Bold links for emphasis */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+
+            th,
+            td {
+                padding: 10px;
+                /* Adjust padding for smaller screens */
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                /* Adjust heading size */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (users.length===0) { %>
+                <tr>
+                    <td colspan="5" style="text-align: center;">No users found</td>
+                </tr>
+                <% } else { %>
+                    <% users.forEach(user=> { %>
+                        <tr>
+                            <td>
+                                <%= user.username %>
+                            </td>
+                            <td>
+                                <%= user.name %>
+                            </td>
+                            <td>
+                                <%= user.surname %>
+                            </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
+                            <td>
+                                <%= user.sex %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                            <% } %>
+        </tbody>
+    </table>
+    <div class="links">
+        <a href="/create">Submit Another User</a>
+    </div>
+</body>
+
+</html>
